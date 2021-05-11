@@ -12,14 +12,14 @@ input = tk.StringVar(root)
 
 def getvalue():
     if input.get().startswith('file://'):
-        if input.get().endswith('.html') or input.get().endswith('.htm') or input.get().endswith('.php'):
+        if input.get().endswith('.html') or input.get().endswith('.htm') or input.get().endswith('.php') or input.get().endswith('.js') or input.get().endswith('.css'):
             print(input.get())
             localfile = open(re.sub('file://', '', str(input.get())))
             with open('source.txt', 'w', encoding='utf-8') as f:
                 f.write(localfile.read())
                 os.startfile('source.txt')
         else:
-            print('Not a html/htm/php file')
+            print('Not a html/htm/php/js/css file')
     else:
         print(input.get())
         r = requests.get(input.get())
